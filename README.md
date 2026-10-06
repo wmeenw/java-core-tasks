@@ -1,17 +1,67 @@
-# Java core tasks
+# Java Core Tasks
 
-Домашнее задание 2 по Java. Пять независимых заданий на классы, коллекции и проектирование.
+Набор из пяти заданий по базовой Java: разбор выражений, собственные коллекции, устойчивость к сбоям, стратегии роста массива и сериализация.
 
-## Что сделано в качестве ДЗ
+Домашнее задание 2 по Java.
 
-1. **Выражения** (`task1`): разбор и вычисление арифметических выражений (`Expr`).
-2. **Динамический массив** (`task2`): собственная реализация `DynamicArray` и `DynamicIntArray`.
-3. **Соединения** (`task3`): менеджер соединений с повторными попытками при сбоях. Есть стабильное (`StableConnection`) и ненадёжное (`FaultyConnection`) соединение, выполнение команд через `PopularCommandExecutor`.
-4. **Стратегии роста массива** (`task4`): удвоение, фиксированный шаг и золотое сечение (`DoblingStrategy`, `FixedIncrementStrategy`, `GoldenRatioStrategy`).
-5. **Сериализация** (`task5`): запись массива в бинарный формат, CSV, JSON и XML через `SerializerFactory`.
+## Задания
+
+### 1. Выражения (`task1`)
+
+Разбор и вычисление арифметических выражений (`Expr`).
+
+### 2. Динамический массив (`task2`)
+
+- `DynamicArray` — обобщённый массив с автоматическим расширением.
+- `DynamicIntArray` — версия для `int` без упаковки в объекты.
+
+### 3. Соединения с повторными попытками (`task3`)
+
+- `Connection` — интерфейс соединения.
+- `StableConnection` — соединение, которое не падает.
+- `FaultyConnection` — соединение, которое периодически выбрасывает `ConnectionException`.
+- `ConnectionManager` / `DefaultConnectionManager` — получение соединения.
+- `FaultyConnectionManager` — менеджер, который работает с ненадёжными соединениями и повторяет попытки.
+- `PopularCommandExecutor` — выполнение команд через менеджер соединений.
+
+### 4. Стратегии роста массива (`task4`)
+
+Интерфейс `CapacityStrategy` и три реализации:
+
+| Стратегия | Класс |
+|-----------|-------|
+| Удвоение ёмкости | `DoblingStrategy` |
+| Фиксированный шаг | `FixedIncrementStrategy` |
+| Золотое сечение | `GoldenRatioStrategy` |
+
+### 5. Сериализация массива (`task5`)
+
+Интерфейс `ArraySerializer` и четыре реализации, которые выбираются через `SerializerFactory`:
+
+- `BinaryArraySerializer` — бинарный формат;
+- `CsvArraySerializer` — CSV;
+- `JsonArraySerializer` — JSON;
+- `XmlArraySerializer` — XML.
+
+## Структура
+
+```
+homework2/src/
+├── Main.java
+├── task1/Expr.java
+├── task2/DynamicArray.java, DynamicIntArray.java
+├── task3/          соединения и менеджеры
+├── task4/          стратегии роста
+└── task5/          сериализаторы и фабрика
+```
 
 ## Запуск
 
-Откройте проект в IntelliJ IDEA (файл `homework2.iml`) и запустите `Main`.
+1. Откройте проект в IntelliJ IDEA (файл `homework2.iml`).
+2. Запустите `Main`.
 
-Исходный код: ветка `homework2` репозитория [wmeenw/JAVAhomework](https://github.com/wmeenw/JAVAhomework).
+Требуется JDK 17 или новее.
+
+## Автор
+
+Мария Комарова — домашнее задание 2 по Java.
